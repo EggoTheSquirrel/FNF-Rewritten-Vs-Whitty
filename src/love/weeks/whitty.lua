@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ------------------------------------------------------------------------------]]
-local stageBack, stageFront, ballisticStage
+local stageBack, stageFront, ballisticStage, ballisticEffect
 
 return {
 	enter = function(self)
@@ -24,6 +24,7 @@ return {
 
 		if songNum == 3 then
 			ballisticStage = love.filesystem.load("sprites/whitty/street-ballistic.lua")()
+			ballisticEffect = Image(love.graphics.newImage(graphics.imagePath("whitty/red")))
 		else
 			stageBack = Image(love.graphics.newImage(graphics.imagePath("whitty/street-back")))
 			stageFront = Image(love.graphics.newImage(graphics.imagePath("whitty/street-front")))
@@ -85,6 +86,7 @@ return {
 	update = function(self, dt)
 		if songNum == 3 then
 			ballisticStage:update(dt)
+			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
 			if ballisticStage.anim.name ~= "moving" then 
 				ballisticStage:animate("moving", true)
 			end
@@ -157,6 +159,7 @@ return {
 				
 				if songNum == 3 then
 					ballisticStage:draw()
+					ballisticEffect:draw()
 				else
 					stageBack:draw()
 					stageFront:draw()
