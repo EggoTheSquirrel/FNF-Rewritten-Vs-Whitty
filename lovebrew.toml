@@ -6,7 +6,7 @@
 # [string] @version     : Version of the game in {major}.{minor}.{revision} format.
 [metadata]
 name = "VsWhitty"
-author = "FNF Rewritten by HTV04, Whitty by Nate Anim8"
+author = "FNF Rewritten by HTV04; Whitty by Nate Anim8; Port by EggoTheSquirrel"
 description = "Vs. Whitty for FNF Rewritten"
 version = "1.0.0"
 
