@@ -53,7 +53,7 @@ binSearchPath = "resources/switch"
 #                     be used for quick testing. However, the directory must be named
 #                     as the default, "game".
 [output]
-build = "build/switch/switch/funkin-rewritten"
+build = "build/switch/switch/VsWhitty"
 rawData = false
 romFS = "game"
 
