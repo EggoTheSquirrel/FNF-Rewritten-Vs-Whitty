@@ -25,6 +25,8 @@ return {
 		if songNum == 3 then
 			ballisticStage = love.filesystem.load("sprites/whitty/street-ballistic.lua")()
 			ballisticEffect = Image(love.graphics.newImage(graphics.imagePath("whitty/red")))
+			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
+
 		else
 			stageBack = Image(love.graphics.newImage(graphics.imagePath("whitty/street-back")))
 			stageFront = Image(love.graphics.newImage(graphics.imagePath("whitty/street-front")))
@@ -39,7 +41,8 @@ return {
 			enemy.x, enemy.y = -380, -50
 		end
 
-		girlfriend.x, girlfriend.y = 30, -90
+		girlfriend = love.filesystem.load("sprites/whitty/girlfriend-sway.lua")()
+		girlfriend.x, girlfriend.y = 30, 0
 		boyfriend.x, boyfriend.y = 260, 100
 		
 		if songNum == 3 then
@@ -86,7 +89,7 @@ return {
 	update = function(self, dt)
 		if songNum == 3 then
 			ballisticStage:update(dt)
-			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
+						
 			if ballisticStage.anim.name ~= "moving" then 
 				ballisticStage:animate("moving", true)
 			end
@@ -117,6 +120,14 @@ return {
 		end
 		
 		weeks:update(dt)
+
+		if girlfriend.anim.name == "idle" then
+			girlfriend.anim.speed = 6 / (60 / bpm)
+		end
+
+		if songNum == 3 and girlfriend.anim.name ~= "scared" then
+			girlfriend:animate("scared", true)
+		end
 				
 		if health >= 80 then
 			if songNum == 3 and enemyIcon.anim.name == "crazy whitty" then
