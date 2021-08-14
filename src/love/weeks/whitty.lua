@@ -41,8 +41,12 @@ return {
 		girlfriend.x, girlfriend.y = 30, -90
 		boyfriend.x, boyfriend.y = 260, 100
 		
-		enemyIcon:animate("unknown", false)
-		
+		if songNum == 3 then
+			enemyIcon:animate("crazy whitty", false)
+		else
+			enemyIcon:animate("whitty", false)
+		end
+
 		self:load()
 	end,
 	
@@ -113,12 +117,16 @@ return {
 		weeks:update(dt)
 				
 		if health >= 80 then
-			if enemyIcon.anim.name == "unknown" then
-				enemyIcon:animate("unknown losing", false)
+			if songNum == 3 and enemyIcon.anim.name == "crazy whitty" then
+				enemyIcon:animate("crazy whitty losing", false)
+			elseif enemyIcon.anim.name == "whitty" then
+				enemyIcon:animate("whitty losing", false)
 			end
 		else
-			if enemyIcon.anim.name == "unknown losing" then
-				enemyIcon:animate("unknown", false)
+			if songNum == 3 and enemyIcon.anim.name == "crazy whitty losing" then
+				enemyIcon:animate("crazy whitty", false)
+			elseif enemyIcon.anim.name == "whitty losing" then
+				enemyIcon:animate("whitty", false)
 			end
 		end
 		
