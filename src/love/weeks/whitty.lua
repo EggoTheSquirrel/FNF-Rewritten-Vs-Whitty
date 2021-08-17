@@ -21,25 +21,13 @@ local stageBack, stageFront, ballisticStage, ballisticEffect
 return {
 	enter = function(self)
 		weeks:enter()
-
-		if songNum == 3 then
-			ballisticStage = love.filesystem.load("sprites/whitty/street-ballistic.lua")()
-			ballisticEffect = Image(love.graphics.newImage(graphics.imagePath("whitty/red")))
-			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
-
-		else
-			stageBack = Image(love.graphics.newImage(graphics.imagePath("whitty/street-back")))
-			stageFront = Image(love.graphics.newImage(graphics.imagePath("whitty/street-front")))
-			stageFront.y = 400
-		end
 		
-		if songNum == 3 then
-			enemy = love.filesystem.load("sprites/whitty/whitty-crazy.lua")()
-			enemy.x, enemy.y = -450, -50
-		else
-			enemy = love.filesystem.load("sprites/whitty/whitty.lua")()
-			enemy.x, enemy.y = -380, -50
-		end
+		enemy = love.filesystem.load("sprites/whitty/whitty.lua")()
+		enemy.x, enemy.y = -380, -50
+
+		stageBack = Image(love.graphics.newImage(graphics.imagePath("whitty/street-back")))
+		stageFront = Image(love.graphics.newImage(graphics.imagePath("whitty/street-front")))
+		stageFront.y = 400
 
 		girlfriend = love.filesystem.load("sprites/whitty/girlfriend-sway.lua")()
 		girlfriend.x, girlfriend.y = 30, 0
@@ -56,6 +44,17 @@ return {
 	
 	load = function(self)
 		weeks:load()
+		
+		if songNum == 3 then
+			ballisticStage = love.filesystem.load("sprites/whitty/street-ballistic.lua")()
+			ballisticEffect = Image(love.graphics.newImage(graphics.imagePath("whitty/red")))
+			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
+		end
+		
+		if songNum == 3 then
+			enemy = love.filesystem.load("sprites/whitty/whitty-crazy.lua")()
+			enemy.x, enemy.y = -450, -50
+		end
 				
 		if songNum == 3 then
 			inst = love.audio.newSource("music/whitty/ballistic-inst.ogg", "stream")
