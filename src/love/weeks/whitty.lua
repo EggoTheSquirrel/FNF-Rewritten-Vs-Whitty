@@ -49,14 +49,10 @@ return {
 			ballisticStage = love.filesystem.load("sprites/whitty/street-ballistic.lua")()
 			ballisticEffect = Image(love.graphics.newImage(graphics.imagePath("whitty/red")))
 			ballisticEffect.x, ballisticEffect.y = cam.x, cam.y
-		end
-		
-		if songNum == 3 then
+
 			enemy = love.filesystem.load("sprites/whitty/whitty-crazy.lua")()
 			enemy.x, enemy.y = -450, -50
-		end
-				
-		if songNum == 3 then
+			
 			inst = love.audio.newSource("music/whitty/ballistic-inst.ogg", "stream")
 			voices = love.audio.newSource("music/whitty/ballistic-voices.ogg", "stream")
 		elseif songNum == 2 then
