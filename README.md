@@ -1,4 +1,4 @@
-#FNFR Vs Whitty For Desktop
+# FNFR Vs Whitty For Desktop
 Someone requested a desktop version of my Whitty mod, and here it is.
 Original readme follows:
 
